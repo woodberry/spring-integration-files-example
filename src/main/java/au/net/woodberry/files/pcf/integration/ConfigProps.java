@@ -25,8 +25,8 @@ public class ConfigProps {
     private String incomingDirectory;
 
     @NotNull
-    private boolean autoCreateDirectory;
+    private String outgoingDirectory;
 
     @NotNull
-    private String outgoingDirectory;
+    private String outgoingDirectoryErrors;
 }
