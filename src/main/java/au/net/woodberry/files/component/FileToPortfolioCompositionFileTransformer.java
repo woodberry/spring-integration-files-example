@@ -1,8 +1,8 @@
-package au.net.woodberry.files.pcf.component;
+package au.net.woodberry.files.component;
 
-import au.net.woodberry.files.pcf.domain.EmptyFieldTypeHandler;
-import au.net.woodberry.files.pcf.domain.PortfolioComposition;
-import au.net.woodberry.files.pcf.exception.CsvFileException;
+import au.net.woodberry.files.domain.PortfolioComposition;
+import au.net.woodberry.files.domain.EmptyFieldTypeHandler;
+import au.net.woodberry.files.exception.CsvFileException;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.beanio.BeanReaderException;

@@ -1,4 +1,4 @@
-package au.net.woodberry.files.pcf.exception;
+package au.net.woodberry.files.exception;
 
 public class CsvFileException extends RuntimeException {
 

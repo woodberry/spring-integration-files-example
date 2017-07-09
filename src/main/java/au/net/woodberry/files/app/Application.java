@@ -1,6 +1,6 @@
-package au.net.woodberry.files.pcf.app;
+package au.net.woodberry.files.app;
 
-import au.net.woodberry.files.pcf.integration.ConfigProps;
+import au.net.woodberry.files.integration.ConfigProps;
 import lombok.extern.slf4j.Slf4j;
 import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import org.springframework.util.FileCopyUtils;
 import java.io.File;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "au.net.woodberry.files.pcf")
+@ComponentScan(basePackages = "au.net.woodberry.files")
 @Component
 @Slf4j
-public class PcfFilesApplication {
+public class Application {
 
     @Autowired
     private ConfigProps configProps;
@@ -27,7 +27,7 @@ public class PcfFilesApplication {
     private Environment environment;
 
     public void copyFiles() throws Exception {
-        val source = new File(PcfFilesApplication.class.getResource("/pcf_file.csv").toURI());
+        val source = new File(Application.class.getResource("/pcf_file.csv").toURI());
         val destination = new File(configProps.getIncomingDirectory() + "/pcf_file.csv");
         if (destination.exists()) {
             log.info("Removing existing file: {}", destination);
@@ -38,8 +38,8 @@ public class PcfFilesApplication {
     }
 
     public static void main(String... args) throws Exception {
-        ConfigurableApplicationContext ctx = SpringApplication.run(PcfFilesApplication.class, args);
-        PcfFilesApplication app = ctx.getBean(PcfFilesApplication.class);
+        ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
+        Application app = ctx.getBean(Application.class);
         app.copyFiles();
     }
 }

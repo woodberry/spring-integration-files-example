@@ -1,4 +1,4 @@
-package au.net.woodberry.files.pcf.domain;
+package au.net.woodberry.files.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,6 +8,9 @@ import org.beanio.annotation.Record;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
+/**
+ * Represents a portfolio composition file.
+ */
 @Record(minOccurs = 1)
 @NoArgsConstructor
 @Data

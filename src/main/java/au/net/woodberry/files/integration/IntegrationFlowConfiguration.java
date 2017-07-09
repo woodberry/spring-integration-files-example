@@ -1,8 +1,8 @@
-package au.net.woodberry.files.pcf.integration;
+package au.net.woodberry.files.integration;
 
-import au.net.woodberry.files.pcf.component.FileToPortfolioCompositionFileTransformer;
-import au.net.woodberry.files.pcf.exception.CsvFileException;
-import au.net.woodberry.files.pcf.util.LoggingUtils;
+import au.net.woodberry.files.component.FileToPortfolioCompositionFileTransformer;
+import au.net.woodberry.files.exception.CsvFileException;
+import au.net.woodberry.files.util.LoggingUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

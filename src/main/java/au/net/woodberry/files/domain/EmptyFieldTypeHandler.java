@@ -1,4 +1,4 @@
-package au.net.woodberry.files.pcf.domain;
+package au.net.woodberry.files.domain;
 
 import org.beanio.types.ConfigurableTypeHandler;
 import org.beanio.types.TypeConversionException;

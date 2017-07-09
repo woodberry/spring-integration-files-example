@@ -1,4 +1,4 @@
-package au.net.woodberry.files.pcf.util;
+package au.net.woodberry.files.util;
 
 import org.apache.logging.log4j.util.Strings;
 
