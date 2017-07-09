@@ -8,7 +8,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.util.FileCopyUtils;
 
@@ -23,10 +22,7 @@ public class Application {
     @Autowired
     private ConfigProps configProps;
 
-    @Autowired
-    private Environment environment;
-
-    public void copyFiles() throws Exception {
+    public void copyFile() throws Exception {
         val source = new File(Application.class.getResource("/pcf_file.csv").toURI());
         val destination = new File(configProps.getIncomingDirectory() + "/pcf_file.csv");
         if (destination.exists()) {
@@ -40,6 +36,6 @@ public class Application {
     public static void main(String... args) throws Exception {
         ConfigurableApplicationContext ctx = SpringApplication.run(Application.class, args);
         Application app = ctx.getBean(Application.class);
-        app.copyFiles();
+        app.copyFile();
     }
 }

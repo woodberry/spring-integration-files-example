@@ -34,7 +34,7 @@ public class FileToPortfolioCompositionFileTransformer implements GenericTransfo
     private StreamFactory streamFactory;
 
     @Autowired
-    private MessageChannel outboundInvalidMessageChannel;
+    private MessageChannel invalidMessageChannel;
 
     @PostConstruct
     public void postConstruct() {
@@ -66,22 +66,22 @@ public class FileToPortfolioCompositionFileTransformer implements GenericTransfo
             beanReader.close();
             return portfolioCompositions;
         } catch (Exception ex) {
-            outboundInvalidMessageChannel.send(MessageBuilder.withPayload(new CsvFileException(ex)).build());
+            invalidMessageChannel.send(MessageBuilder.withPayload(new CsvFileException(ex)).build());
             return null;
         }
     }
 
     private void handleError(BeanReaderException ex) {
         if (ex instanceof InvalidRecordException) {
-            outboundInvalidMessageChannel.send(MessageBuilder.withPayload(new CsvFileException(ex)).build());
+            invalidMessageChannel.send(MessageBuilder.withPayload(new CsvFileException(ex)).build());
             return;
         }
         if (ex instanceof MalformedRecordException) {
-            outboundInvalidMessageChannel.send(MessageBuilder.withPayload(new CsvFileException(ex)).build());
+            invalidMessageChannel.send(MessageBuilder.withPayload(new CsvFileException(ex)).build());
             return;
         }
         if (ex instanceof InvalidRecordGroupException) {
-            outboundInvalidMessageChannel.send(MessageBuilder.withPayload(new CsvFileException(ex)).build());
+            invalidMessageChannel.send(MessageBuilder.withPayload(new CsvFileException(ex)).build());
             return;
         }
         throw new CsvFileException(ex);

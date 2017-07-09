@@ -39,7 +39,7 @@ public class IntegrationFlowConfiguration {
     }
 
     @Bean
-    public MessageChannel outboundInvalidMessageChannel(ErrorHandler exceptionLoggingErrorHandler) {
+    public MessageChannel invalidMessageChannel(ErrorHandler exceptionLoggingErrorHandler) {
         return MessageChannels.publishSubscribe().errorHandler(exceptionLoggingErrorHandler).get();
     }
 
@@ -69,10 +69,10 @@ public class IntegrationFlowConfiguration {
     }
 
     @Bean
-    public IntegrationFlow outboundErrorHandlingFlow(MessageChannel outboundInvalidMessageChannel,
+    public IntegrationFlow outboundErrorHandlingFlow(MessageChannel invalidMessageChannel,
                                                      FileWritingMessageHandler fileWritingErrorMessageHandler,
                                                      ErrorHandler exceptionLoggingErrorHandler) {
-        return IntegrationFlows.from(outboundInvalidMessageChannel)
+        return IntegrationFlows.from(invalidMessageChannel)
                 .transform((GenericTransformer<CsvFileException, String>) source -> source.getMessage())
                 .handle(fileWritingErrorMessageHandler)
                 .get();
